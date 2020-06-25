@@ -6,3 +6,4 @@ class Track(models.Model):
     description = models.TextField(blank=True)   #blank=True allows for description to be null
     url = models.URLField()
     created_at = models.DateTimeField(auto_now_add=True)
+

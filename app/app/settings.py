@@ -37,7 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'graphene_django'
     'tracks'
+]
+
+GRAPHENE = [
+    'SCHEMA: 'app.schema.schema',
 ]
 
 MIDDLEWARE = [
