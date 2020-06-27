@@ -25,9 +25,25 @@ class CreateTrack(graphene.Mutation):
     def mutate(self, info, title, description, url):
         # passing in **kwargs as paramater will give access to all 
         # kwargs.get('title')
-        track = Track(title=title, description=description, url=url)
+
+        user = info.context.user 
+
+        if user.is_anonymous:
+            raise Exception('Log in to add a track')
+
+        track = Track(title=title, description=description, url=url, posted_by=user)
         track.save()    #adds to database
         return CreateTrack(track=track)
+
+
+class UpdateTrack(graphene.Mutation):
+    track = graphene.Field(TrackType)
+
+    class Arguments:
+        title = graphene.String()
+        description = graphene.String()
+        url = graphene.String()
+
 
 class Mutation(graphene.ObjectType):
     create_track = CreateTrack.Field()

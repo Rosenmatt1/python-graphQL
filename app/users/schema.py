@@ -10,16 +10,22 @@ class UserType(DjangoObjectType):
 
 class Query(graphene.ObjectType):
     user = graphene.Field(UserType, id=graphene.Int(required=True))
-
+    me = graphene.Field(UserType)
 
     def resolve_user(self, info, id):
         return get_user_model().objects.get(id=id)
+
+    def resolve_me(self, info):
+        user = info.context.user
+        if user.is_anonymous:
+            raise Exception('Not Logged in!')
+        
+        return user
 
 
 class CreateUser(graphene.Mutation):
     user = graphene.Field(UserType)
     
-
     class Arguments:
         username = graphene.String(required=True)
         password = graphene.String(required=True)
@@ -34,8 +40,12 @@ class CreateUser(graphene.Mutation):
         user.save()
         return CreateUser(user=user)
 
+
 class Mutation(graphene.ObjectType):
     create_user = CreateUser.Field()
+
+
+# Using Insomnia put in the Header of the POST(needs to be post for get)  Authorization JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6IkRvdWciLCJleHAiOjE1OTMyMjY2NzEsIm9yaWdJYXQiOjE1OTMyMjYzNzF9.D5ov7ew4zXXdCD-_9mIliIi40LQAnFjd2QQ1l_yxQ_0
 
 
 # mutation {
@@ -49,5 +59,22 @@ class Mutation(graphene.ObjectType):
 #     }
 #   }
 # }
+
+# {
+#   user (id: 1) {
+#   	password
+#     email
+#     username
+#     dateJoined
+
+#   }
+# }
+
+#   mutation {
+#     tokenAuth(username: "Doug", password: "doug") {
+#       token
+#     }
+#   }
+
     
 
