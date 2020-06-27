@@ -1,6 +1,4 @@
 from django.contrib.auth import get_user_model
-
-
 import graphene
 from graphene_django import DjangoObjectType
 
@@ -9,6 +7,13 @@ class UserType(DjangoObjectType):
     class Meta:
         model = get_user_model()
         # only_fields = ('id', 'email', 'password', 'username')   This would make it so the default fields such as SuperUser are not included
+
+class Query(graphene.ObjectType):
+    user = graphene.Field(UserType, id=graphene.Int(required=True))
+
+
+    def resolve_user(self, info, id):
+        return get_user_model().objects.get(id=id)
 
 
 class CreateUser(graphene.Mutation):
@@ -31,5 +36,18 @@ class CreateUser(graphene.Mutation):
 
 class Mutation(graphene.ObjectType):
     create_user = CreateUser.Field()
+
+
+# mutation {
+#   createUser(username: "Doug5", password: "doug5", email: "doug5@yahoo.com") {
+#     user {
+#       id
+#       password
+#       username
+#       email
+#       dateJoined
+#     }
+#   }
+# }
     
 

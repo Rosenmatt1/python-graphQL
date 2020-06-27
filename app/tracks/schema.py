@@ -1,6 +1,5 @@
 import graphene
 from graphene_django import DjangoObjectType
-
 from .models import Track
 
 class TrackType(DjangoObjectType):
@@ -32,3 +31,18 @@ class CreateTrack(graphene.Mutation):
 
 class Mutation(graphene.ObjectType):
     create_track = CreateTrack.Field()
+
+
+# this is how to create and query a new track
+
+# mutation {
+#   createTrack(title: "Track3", description: "Track3 Description", url: "http://urlTrack3.com") {
+#     track {
+#       id
+#       title
+#       description 
+#       url
+#       createdAt
+#     }
+#   }
+# }
