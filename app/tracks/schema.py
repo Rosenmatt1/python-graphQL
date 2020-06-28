@@ -1,4 +1,5 @@
 import graphene
+import json
 from graphene_django import DjangoObjectType
 from .models import Track
 
@@ -50,7 +51,7 @@ class UpdateTrack(graphene.Mutation):
         track = Track.objects.get(id=track_id)
 
         if track.posted_by != user:
-            raise Exception('Not permitted to updae this track')
+            raise Exception('Not permitted to update this track')
 
         track.title = title
         track.description = description 
@@ -60,9 +61,30 @@ class UpdateTrack(graphene.Mutation):
         return UpdateTrack(track=track)
 
 
+class DeleteTrack(graphene.Mutation):
+    track_id = graphene.Int()
+
+
+    class Arguments:
+        track_id = graphene.Int(required=True)
+
+    def mutate(self, info, track_id, title, description, url):
+        user = info.context.user
+        track = Track.objects.get(id=track_id)
+
+        if track.posted_by != user:
+            raise Exception('Not permitted to delete this track')
+
+        track.delete()
+
+        return DeleteTrack(track_id=track_id)
+
+
 class Mutation(graphene.ObjectType):
     create_track = CreateTrack.Field()
     update_track = UpdateTrack.Field()
+    delete_track = DeleteTrack.Field()
+
 
 # this is how to create and query a new track
 
@@ -77,3 +99,32 @@ class Mutation(graphene.ObjectType):
 #     }
 #   }
 # }
+
+# mutation {
+#   updateTrack(trackId: 4, title: "Track 5", description: "Track 5 Description", url: "http://track5.com") {
+#     track {
+#       id
+#       title
+#       url
+#     }
+#   }
+
+
+# schema = graphene.Schema(query=Query, mutation=Mutation)
+# #  auto_camelcase=False, pass as 2nd argument in query as the autocamelcase false allows the bellow is_admin to be written in snake case
+
+# # ! means it is required
+
+# result = schema.execute(
+#     '''
+#         query {
+#         tracks {
+#             id
+            
+#         }
+#     }
+#     '''
+# )
+
+# dictResult = dict(result.data.items())
+# print(json.dumps(dictResult, indent=2))
