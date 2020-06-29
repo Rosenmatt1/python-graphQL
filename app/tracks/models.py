@@ -11,6 +11,11 @@ class Track(models.Model):
 
 # By using on_delete=models.CASCADE, if a User that created a Track is deleted, then the Track is also deleted!
 
+class Like(models.Model):
+    user = models.ForeignKey(get_user_model(), null=True, on_delete=models.CASCADE)
+    track = models.ForeignKey('tracks.Track', related_name='likes', on_delete=models.CASCADE)
+
+#If add a new class must run makemigrations and migrate
 
 
 
