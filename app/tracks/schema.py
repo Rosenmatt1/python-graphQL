@@ -3,6 +3,7 @@ import json
 from graphene_django import DjangoObjectType
 from .models import Track
 
+
 class TrackType(DjangoObjectType):
     class Meta:
         model = Track
@@ -64,11 +65,10 @@ class UpdateTrack(graphene.Mutation):
 class DeleteTrack(graphene.Mutation):
     track_id = graphene.Int()
 
-
     class Arguments:
         track_id = graphene.Int(required=True)
 
-    def mutate(self, info, track_id, title, description, url):
+    def mutate(self, info, track_id):
         user = info.context.user
         track = Track.objects.get(id=track_id)
 
@@ -76,7 +76,6 @@ class DeleteTrack(graphene.Mutation):
             raise Exception('Not permitted to delete this track')
 
         track.delete()
-
         return DeleteTrack(track_id=track_id)
 
 
@@ -109,22 +108,8 @@ class Mutation(graphene.ObjectType):
 #     }
 #   }
 
-
-# schema = graphene.Schema(query=Query, mutation=Mutation)
-# #  auto_camelcase=False, pass as 2nd argument in query as the autocamelcase false allows the bellow is_admin to be written in snake case
-
-# # ! means it is required
-
-# result = schema.execute(
-#     '''
-#         query {
-#         tracks {
-#             id
-            
-#         }
-#     }
-#     '''
-# )
-
-# dictResult = dict(result.data.items())
-# print(json.dumps(dictResult, indent=2))
+# mutation {
+#   deleteTrack(trackId: 6) {
+#     trackId
+#   }
+# }
