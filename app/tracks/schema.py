@@ -1,8 +1,13 @@
 import graphene
 import json
 from graphene_django import DjangoObjectType
+from graphql import GraphQLError
+from django.db.models import Q  #allows to make more complex qeueries  
+
+
 from .models import Track, Like
 from users.schema import UserType
+
 
 
 class TrackType(DjangoObjectType):
@@ -10,11 +15,29 @@ class TrackType(DjangoObjectType):
         model = Track
 
 
-class Query(graphene.ObjectType):
-    tracks = graphene.List(TrackType)
+class LikeType(DjangoObjectType):
+    class Meta:
+        model = Like
 
-    def resolve_tracks(self, info):
+
+class Query(graphene.ObjectType):
+    tracks = graphene.List(TrackType, search=graphene.String())
+    likes = graphene.List(LikeType)
+
+    def resolve_tracks(self, info, search=None):      # fallback value of search is none
+        if search:
+            filter = (
+                Q(title__icontains=search) |
+                Q(description__icontains=search) |
+                Q(url__icontains=search) |
+                Q(posted_by__username__icontains=search) #the __ is a way to burrow down into a object like . in JavaScript
+            )
+            return Track.objects.filter(filter)  #also isstartswith, exact(case sensiive exact match), iexact(case insensitive exact match), gt(greater than)
+
         return Track.objects.all()
+
+    def resolve_likes(self, info):
+        return Like.objects.all()
 
 
 class CreateTrack(graphene.Mutation):
@@ -32,6 +55,7 @@ class CreateTrack(graphene.Mutation):
         user = info.context.user 
 
         if user.is_anonymous:
+            # raise GraphQLError('Log in to add a track') alternate method to handle errors
             raise Exception('Log in to add a track')
 
         track = Track(title=title, description=description, url=url, posted_by=user)
@@ -102,6 +126,7 @@ class CreateLike(graphene.Mutation):
         user=user,
         track=track
         )
+
         return CreateLike(user=user, track=track)
 
 
@@ -149,5 +174,11 @@ class Mutation(graphene.ObjectType):
 #     user {
 #       username
 #     }
+#   }
+# }
+
+# {
+#   tracks(search: "Track4"){
+#     title
 #   }
 # }
