@@ -9,7 +9,6 @@ from .models import Track, Like
 from users.schema import UserType
 
 
-
 class TrackType(DjangoObjectType):
     class Meta:
         model = Track
