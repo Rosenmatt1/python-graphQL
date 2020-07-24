@@ -4,7 +4,6 @@ from graphene_django import DjangoObjectType
 from graphql import GraphQLError
 from django.db.models import Q  #allows to make more complex qeueries  
 
-
 from .models import Track, Like
 from users.schema import UserType
 
@@ -31,7 +30,7 @@ class Query(graphene.ObjectType):
                 Q(url__icontains=search) |
                 Q(posted_by__username__icontains=search) #the __ is a way to burrow down into a object like . in JavaScript
             )
-            return Track.objects.filter(filter)  #also isstartswith, exact(case sensiive exact match), iexact(case insensitive exact match), gt(greater than)
+            return Track.objects.filter(filter)  #also is starts with exact(case sensitive exact match), iexact(case insensitive exact match), gt(greater than)
 
         return Track.objects.all()
 
