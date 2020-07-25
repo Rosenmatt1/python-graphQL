@@ -62,6 +62,8 @@ MIDDLEWARE = [
 
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:3000',
+    'https://music-player-app-c715c.web.app'
+    'https://music-player-app-c715c.web.app/'
 )
 
 AUTHENTICATION_BACKENDS = [
