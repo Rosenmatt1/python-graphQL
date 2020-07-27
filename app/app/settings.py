@@ -32,10 +32,10 @@ STATICFILES_DIRS = (
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '2+pxbp%8w9n3#+sp!*3%6vk$gt2fg2rl7@534w^-y7s!^soaoe'
+SECRET_KEY = os.environ.get('MUSIC_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
