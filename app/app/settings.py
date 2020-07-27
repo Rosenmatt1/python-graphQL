@@ -80,7 +80,7 @@ CORS_ORIGIN_WHITELIST = (
     'https://music-player-account.herokuapp.com/',
 )
 
-# CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_ALLOW_ALL = True
 # CORS_ALLOW_CREDENTIALS = False
 
 CORS_ALLOW_METHODS = [
@@ -179,7 +179,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = '/static/'
+# STATIC_URL = '/static/'
 
 # Activate Django_Heroku
 django_heroku.settings(locals())
