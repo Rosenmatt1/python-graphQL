@@ -1,0 +1,1 @@
+web: gunicorn music-player-account.wsgi
