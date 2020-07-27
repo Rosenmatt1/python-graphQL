@@ -72,11 +72,14 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ORIGIN_WHITELIST = (
-    'http://localhost:3000',
-    'https://music-player-app-c715c.web.app',
-    'https://music-player-account.herokuapp.com/',
-)
+# CORS_ORIGIN_WHITELIST = (
+#     'http://localhost:3000',
+#     'https://music-player-app-c715c.web.app',
+#     'https://music-player-account.herokuapp.com/',
+# )
+
+CORS_ORIGIN_ALLOW_ALL = true 
+
 
 # https://music-player-account.herokuapp.com/
 
