@@ -12,9 +12,6 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import django_heroku
-# from corsheaders.defaults import default_methods
-# from corsheaders.defaults import default_headers
-
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -30,7 +27,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -94,10 +90,6 @@ CORS_ALLOW_METHODS = [
     'PUT',
 ]
 
-# CORS_ALLOW_METHODS = list(default_methods) + [
-#     'POKE',
-# ]
-
 CORS_ALLOW_HEADERS = [
     'accept',
     'accept-encoding',
@@ -109,11 +101,6 @@ CORS_ALLOW_HEADERS = [
     'x-csrftoken',
     'x-requested-with',
 ]
-
-# CORS_ALLOW_HEADERS = list(default_headers) + [
-#     'my-custom-header',
-# ]
-
 
 # https://music-player-account.herokuapp.com/
 
