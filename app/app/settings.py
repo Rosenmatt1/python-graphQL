@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import django_heroku
+# from corsheaders.defaults import default_methods
+# from corsheaders.defaults import default_headers
+
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -72,14 +76,43 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# CORS_ORIGIN_WHITELIST = (
-#     'http://localhost:3000',
-#     'https://music-player-app-c715c.web.app',
-#     'https://music-player-account.herokuapp.com/',
-# )
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:3000',
+    'https://music-player-app-c715c.web.app',
+    'https://music-player-account.herokuapp.com/',
+)
 
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOW_CREDENTIALS = False
+# CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ALLOW_CREDENTIALS = False
+
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]
+
+# CORS_ALLOW_METHODS = list(default_methods) + [
+#     'POKE',
+# ]
+
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
+
+# CORS_ALLOW_HEADERS = list(default_headers) + [
+#     'my-custom-header',
+# ]
 
 
 # https://music-player-account.herokuapp.com/
