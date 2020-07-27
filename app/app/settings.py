@@ -78,7 +78,7 @@ MIDDLEWARE = [
 #     'https://music-player-account.herokuapp.com/',
 # )
 
-CORS_ORIGIN_ALLOW_ALL = true 
+CORS_ORIGIN_ALLOW_ALL = True 
 
 
 # https://music-player-account.herokuapp.com/
