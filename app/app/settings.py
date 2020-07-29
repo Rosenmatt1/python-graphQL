@@ -36,7 +36,8 @@ SECRET_KEY = os.environ.get('MUSIC_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['music-player-account.herokuapp.com', 'music-player-app-c715c.web.app', 'music-player-app-c715c.firebaseapp.com']
+# ALLOWED_HOSTS = ['music-player-account.herokuapp.com', 'music-player-app-c715c.web.app', 'music-player-app-c715c.firebaseapp.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -103,7 +104,6 @@ CORS_ALLOW_HEADERS = [
 CORS_ORIGIN_ALLOW_ALL = True
 # CORS_ALLOW_CREDENTIALS = False
 
-# https://music-player-account.herokuapp.com/
 
 AUTHENTICATION_BACKENDS = [
     'graphql_jwt.backends.JSONWebTokenBackend',
