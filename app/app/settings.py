@@ -36,7 +36,7 @@ SECRET_KEY = os.environ.get('MUSIC_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['music-player-account.herokuapp.com', 'music-player-app-c715c.web.app']
+ALLOWED_HOSTS = ['music-player-account.herokuapp.com', 'music-player-app-c715c.web.app', 'music-player-app-c715c.firebaseapp.com']
 
 
 # Application definition
