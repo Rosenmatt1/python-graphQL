@@ -75,9 +75,8 @@ MIDDLEWARE = [
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:3000',
     'http://music-player-app-c715c.web.app',
-    'https://music-player-app-c715c.web.app',
-    'http://music-player-account.herokuapp.com/',
-    'https://music-player-account.herokuapp.com/',
+    'http://music-player-account.herokuapp.com',
+ 
 )
 
 CORS_ALLOW_METHODS = [
