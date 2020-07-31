@@ -90,7 +90,7 @@ MIDDLEWARE = [
     # 'app.CorsMiddleware' 
 ]
 
-MIDDLEWARE = [
+MIDDLEWARE_CLASSES = [
     'app.CorsMiddleware' 
 ]
 
