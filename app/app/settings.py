@@ -93,7 +93,7 @@ MIDDLEWARE = [
 
 MIDDLEWARE_CLASSES = [
     'corsheaders.middleware.CorsMiddleware',
-     'django.middleware.common.CommonMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'app.CorsMiddleware' 
 ]
 
