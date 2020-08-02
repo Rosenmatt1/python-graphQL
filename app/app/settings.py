@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import django_heroku
-import django-cors-headers
+# import django-cors-headers
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -33,6 +33,7 @@ STATICFILES_DIRS = (
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('MUSIC_KEY')
+# SECRET_KEY = '2+pxbp%8w9n3#+sp!*3%6vk$gt2fg2rl7@534w^-y7s!^soaoe'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -78,24 +79,24 @@ GRAPHENE = {
 }
 
 MIDDLEWARE = [
-    # 'corsheaders.middleware.CorsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'corsheaders.middleware.CorsPostCsrfMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     # 'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    # 'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    # 'corsheaders.middleware.CorsPostCsrfMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # 'app.CorsMiddleware' 
 ]
 
-MIDDLEWARE_CLASSES = [
-    'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'app.CorsMiddleware' 
-]
+# MIDDLEWARE_CLASSES = [
+#     'corsheaders.middleware.CorsMiddleware',
+#     'django.middleware.common.CommonMiddleware',
+#     'app.CorsMiddleware' 
+# ]
 
 # CORS_ORIGIN_WHITELIST = (
 #     'http://localhost:3000',
