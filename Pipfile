@@ -10,6 +10,7 @@ django = "*"
 graphene-django = "*"
 django-graphql-jwt = "*"
 django-cors-headers = "*"
+django-heroku = "*"
 
 
 [requires]
