@@ -9,6 +9,7 @@ verify_ssl = true
 django = "*"
 graphene-django = "*"
 django-graphql-jwt = "*"
+django-cors-headers = "*"
 
 
 [requires]
