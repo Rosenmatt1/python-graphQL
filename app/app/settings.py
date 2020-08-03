@@ -31,11 +31,11 @@ STATICFILES_DIRS = (
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = os.environ.get('MUSIC_KEY')
-SECRET_KEY = '2+pxbp%8w9n3#+sp!*3%6vk$gt2fg2rl7@534w^-y7s!^soaoe'
+SECRET_KEY = os.environ.get('MUSIC_KEY')
+# SECRET_KEY = '2+pxbp%8w9n3#+sp!*3%6vk$gt2fg2rl7@534w^-y7s!^soaoe'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # ALLOWED_HOSTS = ['music-player-account.herokuapp.com', 'music-player-app-c715c.web.app', 'music-player-app-c715c.firebaseapp.com']
 ALLOWED_HOSTS = ['*']
