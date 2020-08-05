@@ -44,10 +44,10 @@ ALLOWED_HOSTS = ['*']
 # python manage.py startapp app
 # Next you need to add a middleware file app/cors.py:
 
-class CorsMiddleware(object):
-    def process_response(self, req, resp):
-        response["Access-Control-Allow-Origin"] = "*"
-        return response
+# class CorsMiddleware(object):
+#     def process_response(self, req, resp):
+#         response["Access-Control-Allow-Origin"] = "*"
+#         return response
 
 # This will add an Access-Control-Allow-Origin:* header to every Django request but before that you need to add it to the list of middleware classes:
 # MIDDLEWARE_CLASSES = (
