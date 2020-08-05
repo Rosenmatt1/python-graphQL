@@ -76,7 +76,7 @@ pgadmin4==4.17
 Pillow==7.0.0
 pipenv==2018.11.26
 protobuf==3.6.1
-psutil==5.5.1
+psutil==5.6.6
 psycopg2==2.8.5
 psycopg2-binary==2.8.5
 pyasn1==0.4.2
