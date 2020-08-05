@@ -49,12 +49,6 @@ ALLOWED_HOSTS = ['*']
 #         response["Access-Control-Allow-Origin"] = "*"
 #         return response
 
-# This will add an Access-Control-Allow-Origin:* header to every Django request but before that you need to add it to the list of middleware classes:
-# MIDDLEWARE_CLASSES = (
-#     #...
-#     'app.CorsMiddleware' 
-# )
-
 
 # Application definition
 
@@ -82,7 +76,6 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsPostCsrfMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
-    # 'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -99,33 +92,12 @@ MIDDLEWARE = [
 
 # CORS_ORIGIN_WHITELIST = (
 #     'http://localhost:3000',
-#     'http://music-player-app-c715c.web.app',
-#     'http://music-player-account.herokuapp.com',
+#     'https://music-player-app-c715c.web.app',
+#     'https://music-player-account.herokuapp.com',
 # )
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
- 
-# CORS_ALLOW_METHODS = [
-#     'DELETE',
-#     'GET',
-#     'OPTIONS',
-#     'PATCH',
-#     'POST',
-#     'PUT',
-# ]
-
-# CORS_ALLOW_HEADERS = [
-#     'accept',
-#     'accept-encoding',
-#     'authorization',
-#     'content-type',
-#     'dnt',
-#     'origin',
-#     'user-agent',
-#     'x-csrftoken',
-#     'x-requested-with',
-# ]
 
 AUTHENTICATION_BACKENDS = [
     'graphql_jwt.backends.JSONWebTokenBackend',
