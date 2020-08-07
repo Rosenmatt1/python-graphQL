@@ -31,8 +31,8 @@ STATICFILES_DIRS = (
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('MUSIC_KEY')
-# SECRET_KEY = '2+pxbp%8w9n3#+sp!*3%6vk$gt2fg2rl7@534w^-y7s!^soaoe'
+# SECRET_KEY = os.environ.get('MUSIC_KEY')
+SECRET_KEY = '2+pxbp%8w9n3#+sp!*3%6vk$gt2fg2rl7@534w^-y7s!^soaoe'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -90,14 +90,14 @@ MIDDLEWARE = [
 #     'app.CorsMiddleware' 
 # ]
 
-# CORS_ORIGIN_WHITELIST = (
-#     'http://localhost:3000',
-#     'https://music-player-app-c715c.web.app',
-#     'https://music-player-account.herokuapp.com',
-# )
-
-CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_ALLOW_ALL = False
 CORS_ALLOW_CREDENTIALS = True
+
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:3000',
+    'https://music-player-app-c715c.web.app',
+    'https://music-player-account.herokuapp.com',
+)
 
 AUTHENTICATION_BACKENDS = [
     'graphql_jwt.backends.JSONWebTokenBackend',

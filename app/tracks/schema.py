@@ -111,7 +111,7 @@ class CreateLike(graphene.Mutation):
 
     def mutate(self, info, track_id):
         user = info.context.user
-        track = Track.objects.get(id=track_id)
+        # track = Track.objects.get(id=track_id)
 
         if user.is_anonymous:
             raise Exception('Log in to like a track')
@@ -178,5 +178,35 @@ class Mutation(graphene.ObjectType):
 # {
 #   tracks(search: "Track4"){
 #     title
+#   }
+# }
+
+# {
+#   tracks {
+#     title
+#     postedBy {
+#       username
+#     }
+#   }
+# }
+
+# {
+#   likes {
+#     user {
+#       username
+#     }
+#     track {
+#       title
+#     }
+#   }
+# }
+
+# {
+#   likes {
+#     user {
+#       likeSet {
+#         id
+#       }
+#     }
 #   }
 # }
