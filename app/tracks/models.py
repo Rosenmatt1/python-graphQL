@@ -15,6 +15,10 @@ class Like(models.Model):
     user = models.ForeignKey(get_user_model(), null=True, on_delete=models.CASCADE)
     track = models.ForeignKey('tracks.Track', related_name='likes', on_delete=models.CASCADE)
 
+class Play(models.Model):
+    # user = models.ForeignKey(get_user_model(), null=True, on_delete=models.CASCADE)
+    track = models.ForeignKey('tracks.Track', related_name='plays', on_delete=models.CASCADE)
+
 #If add a new class must run makemigrations and migrate*************************************
 
 # {
