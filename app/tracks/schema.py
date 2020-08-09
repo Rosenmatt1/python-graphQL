@@ -17,10 +17,15 @@ class LikeType(DjangoObjectType):
     class Meta:
         model = Like
 
+class PlayedType(DjangoObjectType):
+    class Meta:
+        model = Play
+
 
 class Query(graphene.ObjectType):
     tracks = graphene.List(TrackType, search=graphene.String())
     likes = graphene.List(LikeType)
+    plays = graphene.List(PlayedType)
 
     def resolve_tracks(self, info, search=None):      # fallback value of search is none
         if search:
@@ -36,6 +41,9 @@ class Query(graphene.ObjectType):
 
     def resolve_likes(self, info):
         return Like.objects.all()
+
+    def resolve_played(self, info):
+        return Play.objects.all()
 
 
 class CreateTrack(graphene.Mutation):
@@ -127,12 +135,39 @@ class CreateLike(graphene.Mutation):
 
         return CreateLike(user=user, track=track)
 
+class CreatePlayed(graphene.Mutation): 
+    user = graphene.Field(UserType)
+    track = graphene.Field(TrackType)
+    played = graphene.Field(PlayedType)
+
+    class Arguments:
+        track_id = graphene.Int(required=True)
+
+    def mutate(self, info, track_id):
+        user = info.context.user
+        # track = Track.objects.get(id=track_id)
+
+        if user.is_anonymous:
+            raise Exception('Log in to play track')
+    
+        track = Track.objects.get(id=track_id)
+        if not track:
+            raise Exception('Cannot not find track with given track id')
+
+        Like.objects.create(
+        user=user,
+        track=track
+        )
+
+        return CreatePlayed(user=user, track=track)
+
 
 class Mutation(graphene.ObjectType):
     create_track = CreateTrack.Field()
     update_track = UpdateTrack.Field()
     delete_track = DeleteTrack.Field()
     create_like = CreateLike.Field()
+    create_played = createPlayed.Field()
 
 # this is how to create and query a new track
 
