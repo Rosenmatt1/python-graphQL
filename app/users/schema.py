@@ -62,7 +62,7 @@ class Mutation(graphene.ObjectType):
 
 # {
 #   user (id: 1) {
-#   	password
+#       password
 #     email
 #     username
 #     dateJoined
