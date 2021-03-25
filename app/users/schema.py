@@ -21,7 +21,7 @@ class Query(graphene.ObjectType):
             raise Exception('Not Logged in!')
         
         return user
-
+#me query returns current authenticated user / need to add Authorization JWT "token" in Insomnia
 
 class CreateUser(graphene.Mutation):
     user = graphene.Field(UserType)

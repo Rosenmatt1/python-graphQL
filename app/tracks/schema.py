@@ -12,7 +12,6 @@ class TrackType(DjangoObjectType):
     class Meta:
         model = Track
 
-
 class LikeType(DjangoObjectType):
     class Meta:
         model = Like
@@ -21,7 +20,7 @@ class PlayedType(DjangoObjectType):
     class Meta:
         model = Play
 
-
+# user = graphene.ID(default_value=uuid.uuid4())
 class Query(graphene.ObjectType):
     tracks = graphene.List(TrackType, search=graphene.String())
     likes = graphene.List(LikeType)
@@ -218,14 +217,7 @@ class Mutation(graphene.ObjectType):
 #   }
 # }
 
-# {
-#   tracks {
-#     title
-#     postedBy {
-#       username
-#     }
-#   }
-# }
+
 
 # {
 #   likes {

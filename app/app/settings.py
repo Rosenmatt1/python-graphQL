@@ -32,6 +32,7 @@ STATICFILES_DIRS = (
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = os.environ.get('MUSIC_KEY')
+
 SECRET_KEY = '2+pxbp%8w9n3#+sp!*3%6vk$gt2fg2rl7@534w^-y7s!^soaoe'
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -76,11 +77,11 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsPostCsrfMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
     # 'app.CorsMiddleware' 
 ]
 
