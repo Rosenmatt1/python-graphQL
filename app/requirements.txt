@@ -74,7 +74,7 @@ passlib==1.7.1
 pexpect==4.6.0
 pgadmin4==4.17
 Pillow==7.0.0
-pipenv==2018.11.26
+pipenv==2022.1.8
 protobuf==3.6.1
 psutil==5.5.1
 psycopg2==2.8.5
