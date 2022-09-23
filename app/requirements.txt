@@ -75,7 +75,7 @@ pexpect==4.6.0
 pgadmin4==4.17
 Pillow==7.0.0
 pipenv==2018.11.26
-protobuf==3.6.1
+protobuf==3.18.3
 psutil==5.5.1
 psycopg2==2.8.5
 psycopg2-binary==2.8.5
