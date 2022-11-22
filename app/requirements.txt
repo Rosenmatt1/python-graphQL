@@ -73,7 +73,7 @@ paramiko==2.6.0
 passlib==1.7.1
 pexpect==4.6.0
 pgadmin4==4.17
-Pillow==7.0.0
+Pillow==9.3.0
 pipenv==2018.11.26
 protobuf==3.6.1
 psutil==5.5.1
